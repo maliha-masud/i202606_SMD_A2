@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_country1"
+        android:title="Pakistan" />
+    <item
+        android:id="@+id/menu_item_country2"
+        android:title="India" />
+    <item
+        android:id="@+id/menu_item_country3"
+        android:title="United Arab Emirates" />
+    <item
+        android:id="@+id/menu_item_country4"
+        android:title="Finland" />
+</menu>

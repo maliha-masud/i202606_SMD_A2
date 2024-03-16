@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="#DEF8F8">
+
+    <RelativeLayout
+        android:id="@+id/call_screen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.25"
+        android:background="#CCCCCC">
+        <TextView
+            android:id="@+id/call_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="50:08">
+        </TextView>
+
+        <RelativeLayout
+            android:layout_width="145dp"
+            android:layout_height="175dp"
+            android:background="@drawable/rounded_corners_txt"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp">
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gray_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/call_screen"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/gray_horizontal"
+        android:layout_marginTop="8dp">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:layout_below="@+id/gray_line">
+
+        <ImageButton
+            android:id="@+id/mic_btn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/mic_off_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="45dp">
+        </ImageButton>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <ImageButton
+                android:id="@+id/vid_off_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/vid_off_icon"
+                android:layout_marginRight="45dp">
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/rotate_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@+id/vid_off_btn"
+                android:background="@drawable/rotate_icon">
+            </ImageButton>
+        </RelativeLayout>
+        <ImageButton
+            android:id="@+id/close_btn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/close_red"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="45dp">
+        </ImageButton>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEF8F8">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="244dp"
+            android:background="#B1C6C6">
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#50C2C9">
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/back_darkest_blue"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="61dp"
+                android:layout_marginLeft="25dp">
+            </ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp"
+                android:text="Edit Profile"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold">
+            </TextView>
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/pfp_btn"
+            android:layout_width="135dp"
+            android:layout_height="130dp"
+            android:background="@drawable/ali_pfp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="165dp">
+        </ImageButton>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#157177"
+        android:textSize="17sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="5dp">
+    </TextView>
+    <EditText
+        android:id="@+id/name_edittxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_txt"
+        android:paddingLeft="16dp"
+        android:text="Ali"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:textColor="#B3AFAF">
+    </EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="#157177"
+        android:textSize="17sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp">
+    </TextView>
+    <EditText
+        android:id="@+id/email_edittxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_txt"
+        android:paddingLeft="16dp"
+        android:text="ali@gmail.com"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:textColor="#B3AFAF">
+    </EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Number"
+        android:textColor="#157177"
+        android:textSize="17sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp">
+    </TextView>
+    <EditText
+        android:id="@+id/phone_no_edittxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_txt"
+        android:paddingLeft="16dp"
+        android:text="+92 321 2242022"
+        android:inputType="phone"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:textColor="#918C8C">
+    </EditText>
+
+    <TextView
+        android:id="@+id/country_txt"
+        android:layout_below="@+id/phone_no_edittxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Country"
+        android:textColor="#157177"
+        android:textSize="17sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/country_dropdown"
+        android:layout_width="355dp"
+        android:layout_height="42dp"
+        android:background="@drawable/dropdown_menu_spinner"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/select_country_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Pakistan"
+            android:textSize="16sp"
+            android:textColor="#918C8C" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/dropdown"
+            android:layout_marginRight="13dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/city_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textColor="#157177"
+        android:textSize="17sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/city_dropdown"
+        android:layout_width="355dp"
+        android:layout_height="42dp"
+        android:background="@drawable/dropdown_menu_spinner"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/select_city_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Islamabad"
+            android:textSize="16sp"
+            android:textColor="#918C8C" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/dropdown"
+            android:layout_marginRight="13dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/upload_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_blue_btn"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="52dp">
+        <Button
+            android:id="@+id/update"
+            android:layout_width="345dp"
+            android:layout_height="56dp"
+            android:text="Update Profile"
+            android:textColor="#FFFFFF"
+            android:textSize="18.5sp"
+            android:textStyle="bold">
+        </Button>
+    </RelativeLayout>
+
+</LinearLayout>

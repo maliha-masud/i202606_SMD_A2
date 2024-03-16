@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_city1"
+        android:title="Islamabad" />
+    <item
+        android:id="@+id/menu_item_city2"
+        android:title="Helsinki" />
+    <item
+        android:id="@+id/menu_item_city3"
+        android:title="Sharjah" />
+    <item
+        android:id="@+id/menu_item_city4"
+        android:title="Hyderabad" />
+</menu>

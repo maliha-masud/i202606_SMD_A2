@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEF8F8"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="134dp"
+        android:src="@drawable/top_corner"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/mentorme_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="93dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mentor"
+            android:textColor="#2DA6AD"
+            android:textSize="54sp"
+            android:fontFamily="@font/grosskunstitalic"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="me"
+            android:textColor="#FFC90A"
+            android:textSize="54sp"
+            android:fontFamily="@font/grosskunstitalic"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_blue_border"
+        android:layout_below="@id/mentorme_txt"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/login_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="15dp"
+            android:text="Login"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="22dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/email_edittxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_txt"
+            android:paddingLeft="16dp"
+            android:hint="Enter Email"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#918C8C"
+            android:textColor="#918C8C">
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="12dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/pwd_edittxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_txt"
+            android:paddingLeft="16dp"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:textColorHint="#918C8C"
+            android:textColor="#918C8C">
+        </EditText>
+
+        <Button
+            android:id="@+id/forgot_pwd_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Your Password?"
+            android:textSize="12sp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="-10dp">
+        </Button>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="208dp"
+            android:layout_height="41dp"
+            android:text="Login"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:textColor="#50C2C9"
+            android:textSize="17sp"
+            android:textStyle="bold">
+            </Button>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dontacc_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don’t have an account?"
+        android:textColor="#FFFFFF"
+        android:textSize="14.2sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="110dp">
+    </TextView>
+
+    <Button
+        android:id="@+id/signup_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dontacc_txt"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/btn_sign_up"
+        android:textSize="14.2sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
+        android:paddingLeft="-7dp"
+        android:textColor="#157177">
+    </Button>
+
+</RelativeLayout>

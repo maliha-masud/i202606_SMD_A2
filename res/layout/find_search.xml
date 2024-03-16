@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEF8F8"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="165dp"
+        android:src="@drawable/top_corner"></ImageView>
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/back_dark_blue"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="35dp"
+        android:background="@android:color/transparent">
+    </ImageButton>
+    <TextView
+        android:id="@+id/find_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/back_btn"
+        android:text="Let’s Find..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="28sp"
+        android:textColor="#157177"
+        android:textStyle="bold">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/search_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/find_txt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="35dp">
+        <EditText
+            android:id="@+id/search_edittxt"
+            android:layout_width="348dp"
+            android:layout_height="40dp"
+            android:background="@drawable/search_view"
+            android:hint="Search"
+            android:paddingLeft="36dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColorHint="#CCCCCC"
+            android:textColor="#000000">
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/search_icon_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/search_icon">
+        </ImageButton>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/recent_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:text="Recent searches"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="18dp"
+        android:textSize="16sp"
+        android:textColor="#157177"
+        android:textStyle="bold">
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/search1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recent_txt"
+        android:layout_marginTop="25dp"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginLeft="18dp"
+            android:text="Mentor 1"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/cross1"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/cross"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="22dp"
+            android:background="@android:color/transparent">
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search1"
+        android:layout_marginTop="23dp"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginLeft="18dp"
+            android:text="Mentor 2"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/cross2"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/cross"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="22dp"
+            android:background="@android:color/transparent">
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search2"
+        android:layout_marginTop="23dp"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginLeft="18dp"
+            android:text="Mentor 3"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/cross3"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/cross"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="22dp"
+            android:background="@android:color/transparent">
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_blue_border_light"
+        android:layout_below="@id/search3"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/browse_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/back_btn"
+            android:text="Browse Categories"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="24.5sp"
+            android:textColor="#157177"
+            android:textStyle="bold">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/entre_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="end">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/entre_icon"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="20dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="21sp"
+                android:layout_marginLeft="8dp"
+                android:text="Entrepreneurship"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/entre_nav"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/arrow_tilted"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="22dp"
+                android:background="@android:color/transparent">
+            </ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pg_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="end">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/pg_icon"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="20dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="21sp"
+                android:layout_marginLeft="8dp"
+                android:text="Personal Growth"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/pg_nav"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/arrow_tilted"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="22dp"
+                android:background="@android:color/transparent">
+            </ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/education_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="end">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/education_icon"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="20dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="21sp"
+                android:layout_marginLeft="8dp"
+                android:text="Education"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/education_nav"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/arrow_tilted"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="22dp"
+                android:background="@android:color/transparent">
+            </ImageButton>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_bar_circle"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_bar">
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/plus_btn"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/nav_plus"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true">
+    </ImageButton>
+
+    <LinearLayout
+        android:id="@+id/nav_bar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="38dp">
+        <ImageButton
+            android:id="@+id/home_btn"
+            android:layout_width="26.5dp"
+            android:layout_height="26.5dp"
+            android:background="@drawable/home_unclicked">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="26.5dp"
+            android:layout_height="26.5dp"
+            android:background="@drawable/search_clicked"
+            android:layout_marginLeft="50dp">
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/nav_bar_left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="31dp">
+        <ImageButton
+            android:id="@+id/chat_btn"
+            android:layout_width="26.5dp"
+            android:layout_height="26.5dp"
+            android:background="@drawable/chats_unclicked"
+            android:layout_marginRight="55dp">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/profile_btn"
+            android:layout_width="26.5dp"
+            android:layout_height="26dp"
+            android:background="@drawable/profile_unclicked">
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nav_bar_left_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="35dp">
+        <TextView
+            android:id="@+id/home_txt"
+            android:clickable="true"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="#51A8A6">
+        </TextView>
+        <TextView
+            android:id="@+id/search_txt"
+            android:clickable="true"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:text="Search"
+            android:textColor="#FFFFFF">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="26dp">
+        <TextView
+            android:id="@+id/chat_txt"
+            android:clickable="true"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat"
+            android:textColor="#51A8A6">
+        </TextView>
+        <TextView
+            android:id="@+id/profile_txt"
+            android:clickable="true"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:text="Profile"
+            android:textColor="#51A8A6">
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>

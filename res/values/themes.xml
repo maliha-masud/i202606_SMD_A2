@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.I202606" parent="Theme.MaterialComponents.Light.Bridge">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name = "android:windowActionBar">false</item>
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="Theme.I202606" parent="Base.Theme.I202606" />
+
+    <style name="AppButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+</resources>
