@@ -6,7 +6,6 @@ import android.os.SystemClock
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
 import android.widget.TextView
-import java.util.logging.Logger.global
 
 class VoiceCall : AppCompatActivity() {
     private lateinit var callTimeTextView: TextView

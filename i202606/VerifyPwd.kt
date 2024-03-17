@@ -1,15 +1,9 @@
 package com.maliha.i202606
 
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.media.Image
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.ImageButton
