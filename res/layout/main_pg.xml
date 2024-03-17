@@ -13,6 +13,15 @@
         android:background="#DEF8F8"
         tools:context=".MainActivity">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="48dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="190dp"
@@ -204,238 +213,12 @@
             android:layout_marginTop="12dp"
             android:scrollbars="none">
             <LinearLayout
+                android:id="@+id/top_mentors_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="14dp">
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/jc_txt"
-                            android:clickable="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Cooper"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="UX Designer @ Google"
-                            android:layout_below="@+id/jc_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_1"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/available_circle"
-                            android:layout_below="@id/pos_1"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Available"
-                            android:textColor="#A7DA8C"
-                            android:layout_toRightOf="@id/available_1"
-                            android:layout_below="@id/pos_1"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$1500/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
                 <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/mw_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Martina Watson"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lead - Technology Officer"
-                            android:layout_below="@+id/mw_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_2"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/not_available_circle"
-                            android:layout_below="@id/pos_2"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Not Available"
-                            android:textColor="#C4C4C3"
-                            android:layout_toRightOf="@id/available_2"
-                            android:layout_below="@id/pos_2"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$500/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/not_filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
-                <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/emma_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Emma"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lead - Corporate"
-                            android:layout_below="@+id/emma_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_3"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/not_available_circle"
-                            android:layout_below="@id/pos_3"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Not Available"
-                            android:textColor="#C4C4C3"
-                            android:layout_toRightOf="@id/available_3"
-                            android:layout_below="@id/pos_3"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$500/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/not_filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -480,237 +263,11 @@
             android:layout_marginTop="12dp"
             android:scrollbars="none">
             <LinearLayout
+                android:id="@+id/edu_mentors_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="14dp">
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/nd_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Michael Drake"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="NLP Expert"
-                            android:layout_below="@+id/nd_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_4"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/available_circle"
-                            android:layout_below="@id/pos_4"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Available"
-                            android:textColor="#A7DA8C"
-                            android:layout_toRightOf="@id/available_4"
-                            android:layout_below="@id/pos_4"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$900/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
-                <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/alex_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Alex"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Android Developer"
-                            android:layout_below="@+id/alex_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_5"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/not_available_circle"
-                            android:layout_below="@id/pos_5"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Not Available"
-                            android:textColor="#C4C4C3"
-                            android:layout_toRightOf="@id/available_5"
-                            android:layout_below="@id/pos_5"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$200/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/not_filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
-                <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp">
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_corners_txt"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="8dp">
-                        <TextView
-                            android:id="@+id/jane_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jane"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="12sp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/pos_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lead - Corporate"
-                            android:layout_below="@+id/jane_txt"
-                            android:textSize="8sp"
-                            android:textColor="@color/black">
-                        </TextView>
-                        <RelativeLayout
-                            android:id="@+id/available_6"
-                            android:layout_width="8.5dp"
-                            android:layout_height="8.5dp"
-                            android:background="@drawable/not_available_circle"
-                            android:layout_below="@id/pos_6"
-                            android:layout_marginTop="3dp">
-                        </RelativeLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Not Available"
-                            android:textColor="#C4C4C3"
-                            android:layout_toRightOf="@id/available_6"
-                            android:layout_below="@id/pos_6"
-                            android:textSize="8sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginTop="2dp">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/price_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$500/Session"
-                            android:textColor="#F7E194"
-                            android:textStyle="bold"
-                            android:textSize="7sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp">
-                        </TextView>
-                        <ImageButton
-                            android:id="@+id/fav_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/not_filled_fav_heart"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginRight="11dp">
-                        </ImageButton>
-                    </RelativeLayout>
-                </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -758,7 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="14dp">
+                android:layout_marginLeft="22dp">
                 <RelativeLayout
                     android:layout_width="175dp"
                     android:layout_height="165dp"
@@ -781,6 +338,9 @@
                 </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
+
+        </RelativeLayout>
+        </ScrollView>
 
         <!-- BOTTOM NAV BAR -->
         <RelativeLayout
