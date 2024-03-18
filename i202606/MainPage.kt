@@ -47,6 +47,7 @@ class MainPage : AppCompatActivity() {
 
         val topMentorsLinearLayout: LinearLayout = binding.topMentorsLinearLayout
         val eduMentorsLinearLayout: LinearLayout = binding.eduMentorsLinearLayout
+        val recentMentorsLinearLayout: LinearLayout = binding.recentMentorsLinearLayout
         databaseReference.child("Mentors").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val totalMentors = dataSnapshot.childrenCount.toInt()
@@ -54,8 +55,14 @@ class MainPage : AppCompatActivity() {
                     val mentor = mentorSnapshot.getValue(Mentor::class.java)
                     if (mentor != null) {
                         // Inflate the mentor item layout with the appropriate parent linear layout
-                        val parentLinearLayout = if (mentor.type == "Top") topMentorsLinearLayout else eduMentorsLinearLayout
+                        var parentLinearLayout = recentMentorsLinearLayout
+                        if (mentor.type == "Top")
+                            parentLinearLayout = topMentorsLinearLayout
+                        else if (mentor.type == "Education")
+                            parentLinearLayout = eduMentorsLinearLayout
                         val mentorView = layoutInflater.inflate(R.layout.mentor_item, parentLinearLayout, false)
+                        val mentorViewHolder = MentorItemViewHolder(mentorView)
+                        mentorViewHolder.bind(mentor, databaseReference)
 
                         // Populate the mentor view with mentor data
                         mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentor.name
@@ -66,23 +73,23 @@ class MainPage : AppCompatActivity() {
                         mentorStatusTextView.text = mentor.status
                         val mentorStatusRelativeLayout = mentorView.findViewById<RelativeLayout>(R.id.mentor_status)
 
-                        // Set text color based on mentor status
-                        if (mentor.status == "Available") {
-                            // Set color for Available status
-                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.available_color))
-                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.available_circle)
-                        } else {
-                            // Set color for Not Available status
-                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.not_available_color))
-                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.not_available_circle)
-                        }
+//                        // Set text color based on mentor status
+//                        if (mentor.status == "Available") {
+//                            // Set color for Available status
+//                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.available_color))
+//                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.available_circle)
+//                        } else {
+//                            // Set color for Not Available status
+//                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.not_available_color))
+//                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.not_available_circle)
+//                        }
 
-                        val favoriteButton = mentorView.findViewById<ImageButton>(R.id.fav_1)
-                        if (mentor.fav) {
-                            favoriteButton.setImageResource(R.drawable.filled_fav_heart)
-                        } else {
-                            favoriteButton.setImageResource(R.drawable.not_filled_fav_heart)
-                        }
+//                        val favoriteButton = mentorView.findViewById<ImageButton>(R.id.fav_1)
+//                        if (mentor.fav) {
+//                            favoriteButton.setImageResource(R.drawable.filled_fav_heart)
+//                        } else {
+//                            favoriteButton.setImageResource(R.drawable.not_filled_fav_heart)
+//                        }
 
                         // Add the mentor view to the parent linear layout
                         parentLinearLayout.addView(mentorView)

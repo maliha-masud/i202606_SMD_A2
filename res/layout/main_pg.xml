@@ -312,33 +312,13 @@
             android:layout_marginTop="12dp"
             android:scrollbars="none">
             <LinearLayout
+                android:id="@+id/recent_mentors_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="22dp">
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes">
-                </RelativeLayout>
-                <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp">
-                </RelativeLayout>
-                <!-- -->
-                <RelativeLayout
-                    android:layout_width="175dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/search_result_boxes"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp">
-                </RelativeLayout>
+                android:layout_marginLeft="14dp">
             </LinearLayout>
         </HorizontalScrollView>
-
         </RelativeLayout>
         </ScrollView>
 

@@ -17,7 +17,7 @@ import com.maliha.i202606.databinding.SignUpBinding
 class SignUp : AppCompatActivity() {
     private lateinit var binding:SignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var database: DatabaseReference
+//    private lateinit var database: DatabaseReference
 
     private var selectedCountry: String = ""
     private var selectedCity: String = ""
@@ -77,7 +77,6 @@ class SignUp : AppCompatActivity() {
         }
 
         /////////// Dropdown functionality ///////////////
-
         val countryDropdown = findViewById<RelativeLayout>(R.id.country_dropdown)
 
         countryDropdown.setOnClickListener { view ->
