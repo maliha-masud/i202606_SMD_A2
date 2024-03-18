@@ -71,25 +71,6 @@ class MainPage : AppCompatActivity() {
 
                         val mentorStatusTextView = mentorView.findViewById<TextView>(R.id.mentor_status_txt)
                         mentorStatusTextView.text = mentor.status
-                        val mentorStatusRelativeLayout = mentorView.findViewById<RelativeLayout>(R.id.mentor_status)
-
-//                        // Set text color based on mentor status
-//                        if (mentor.status == "Available") {
-//                            // Set color for Available status
-//                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.available_color))
-//                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.available_circle)
-//                        } else {
-//                            // Set color for Not Available status
-//                            mentorStatusTextView.setTextColor(ContextCompat.getColor(this@MainPage, R.color.not_available_color))
-//                            mentorStatusRelativeLayout.setBackgroundResource(R.drawable.not_available_circle)
-//                        }
-
-//                        val favoriteButton = mentorView.findViewById<ImageButton>(R.id.fav_1)
-//                        if (mentor.fav) {
-//                            favoriteButton.setImageResource(R.drawable.filled_fav_heart)
-//                        } else {
-//                            favoriteButton.setImageResource(R.drawable.not_filled_fav_heart)
-//                        }
 
                         // Add the mentor view to the parent linear layout
                         parentLinearLayout.addView(mentorView)

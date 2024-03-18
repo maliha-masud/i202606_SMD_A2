@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.PopupMenu
+import android.widget.RelativeLayout
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.maliha.i202606.databinding.MyProfileBinding
@@ -56,6 +59,43 @@ class MyProfile : AppCompatActivity() {
                     }
                 })
         }
+
+        val favMentorsLinearLayout: LinearLayout = binding.favMentorsLinearLayout
+        databaseReference.child("Mentors").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEachIndexed { index, mentorSnapshot ->
+                    val mentor = mentorSnapshot.getValue(Mentor::class.java)
+                    if (mentor != null && mentor.fav) { // Filter only mentors with fav set to true
+                        // Inflate the mentor item layout with the appropriate parent linear layout
+                        val mentorView = layoutInflater.inflate(R.layout.mentor_item, favMentorsLinearLayout, false)
+                        val mentorViewHolder = MentorItemViewHolder(mentorView)
+                        mentorViewHolder.bind(mentor, databaseReference)
+
+                        // Populate the mentor view with mentor data
+                        mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentor.name
+                        mentorView.findViewById<TextView>(R.id.mentor_desc).text = mentor.desc
+                        mentorView.findViewById<TextView>(R.id.mentor_price).text = ""
+
+                        val mentorStatusTextView = mentorView.findViewById<TextView>(R.id.mentor_status_txt)
+                        mentorStatusTextView.text = mentor.status
+
+                        // Add the mentor view to the parent linear layout
+                        favMentorsLinearLayout.addView(mentorView)
+
+                        // Apply margin to the right of the mentor view if it's the last mentor
+                        if (index.toLong() == dataSnapshot.childrenCount - 1) {
+                            val params = mentorView.layoutParams as LinearLayout.LayoutParams
+                            params.rightMargin = resources.getDimensionPixelSize(R.dimen.margin_end)
+                            mentorView.layoutParams = params
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors
+            }
+        })
 
 //        val profileEditBtn = findViewById<RelativeLayout>(R.id.profile_edit)
         binding.profileEdit.setOnClickListener {

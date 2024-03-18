@@ -38,7 +38,7 @@ class AddMentor : AppCompatActivity() {
             // Validation of fields
             if (username.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty() && status.isNotEmpty()) {
                 database = FirebaseDatabase.getInstance().getReference("Mentors")
-                val mentor = Mentor(name, desc, 200, status, "Recent", false)
+                val mentor = Mentor(name, desc, 200, status, "Recent", false, username)
 
                 database.child(username).setValue(mentor).addOnSuccessListener {
                     Toast.makeText(this, "Mentor added successfully", Toast.LENGTH_SHORT).show()
