@@ -1,5 +1,6 @@
 package com.maliha.i202606
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
@@ -28,12 +29,11 @@ class EditProfile : AppCompatActivity() {
 
 //        val backBtn = findViewById<ImageButton>(R.id.back_btn)
         binding.backBtn.setOnClickListener { finish() }
-//        val uploadBtn = findViewById<Button>(R.id.update)
-        binding.uploadBtn.setOnClickListener{finish()}
 
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
 
+        //Display the user's details in the fields
         val currentUserUid = firebaseAuth.currentUser?.uid
         currentUserUid?.let {
             databaseReference.child("Users").child(it).child("name")
@@ -47,6 +47,7 @@ class EditProfile : AppCompatActivity() {
                         // Handle errors
                     }
                 })
+
             databaseReference.child("Users").child(it).child("email")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -58,6 +59,7 @@ class EditProfile : AppCompatActivity() {
                         // Handle errors
                     }
                 })
+
             databaseReference.child("Users").child(it).child("num")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -69,6 +71,7 @@ class EditProfile : AppCompatActivity() {
                         // Handle errors
                     }
                 })
+
             databaseReference.child("Users").child(it).child("country")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -80,6 +83,7 @@ class EditProfile : AppCompatActivity() {
                         // Handle errors
                     }
                 })
+
             databaseReference.child("Users").child(it).child("city")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -91,6 +95,25 @@ class EditProfile : AppCompatActivity() {
                         // Handle errors
                     }
                 })
+
+            // Add click listener to the upload button
+            binding.update.setOnClickListener {
+                val newName = binding.nameEdittxt.text.toString()
+                val newEmail = binding.emailEdittxt.text.toString()
+                val newPhoneNo = binding.phoneNoEdittxt.text.toString()
+                val newCountry = binding.selectCountryTxt.text.toString()
+                val newCity = binding.selectCityTxt.text.toString()
+
+                // Update user's fields in the database under the current user's UID
+                databaseReference.child("Users").child(currentUserUid).apply {
+                    child("name").setValue(newName)
+                    child("email").setValue(newEmail)
+                    child("num").setValue(newPhoneNo)
+                    child("country").setValue(newCountry)
+                    child("city").setValue(newCity)
+                }
+                startActivity(Intent(this, MyProfile::class.java))
+            }
         }
 
 //        val countryDropdown = findViewById<RelativeLayout>(R.id.country_dropdown)
