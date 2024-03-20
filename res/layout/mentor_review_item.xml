@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="152dp"
+    android:layout_height="122dp"
+    android:background="@drawable/rounded_blue_rectangle"
+    android:layout_marginRight="11dp"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/mentor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="John Cooper"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:layout_centerHorizontal="true">
+    </TextView>
+    <RatingBar
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mentor_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:rating="0"
+        style="?android:attr/ratingBarStyleSmall"
+        android:theme="@style/RatingBar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ratingbar">
+        <TextView
+            android:id="@+id/review_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="I highly recommend him!"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="9.5sp"
+            android:textColor="@color/black"
+            android:textStyle="normal">
+        </TextView>
+    </RelativeLayout>
+</RelativeLayout>

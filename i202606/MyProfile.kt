@@ -1,5 +1,6 @@
 package com.maliha.i202606
 
+import MentorItemViewHolder
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
@@ -7,7 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.PopupMenu
-import android.widget.RelativeLayout
+import android.widget.RatingBar
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -64,20 +65,25 @@ class MyProfile : AppCompatActivity() {
         databaseReference.child("Mentors").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataSnapshot.children.forEachIndexed { index, mentorSnapshot ->
-                    val mentor = mentorSnapshot.getValue(Mentor::class.java)
-                    if (mentor != null && mentor.fav) { // Filter only mentors with fav set to true
+                    val mentorId = mentorSnapshot.key // Get mentor ID
+                    val mentorName = mentorSnapshot.child("name").getValue(String::class.java)
+                    val mentorDesc = mentorSnapshot.child("desc").getValue(String::class.java)
+                    val mentorStatus = mentorSnapshot.child("status").getValue(String::class.java)
+                    val mentorFav = mentorSnapshot.child("fav").getValue(Boolean::class.java)
+
+                    if (mentorFav == true) { // Filter only mentors with fav set to true
                         // Inflate the mentor item layout with the appropriate parent linear layout
                         val mentorView = layoutInflater.inflate(R.layout.mentor_item, favMentorsLinearLayout, false)
                         val mentorViewHolder = MentorItemViewHolder(mentorView)
-                        mentorViewHolder.bind(mentor, databaseReference)
+                        mentorViewHolder.bind(mentorId ?: "", databaseReference)
 
                         // Populate the mentor view with mentor data
-                        mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentor.name
-                        mentorView.findViewById<TextView>(R.id.mentor_desc).text = mentor.desc
+                        mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentorName
+                        mentorView.findViewById<TextView>(R.id.mentor_desc).text = mentorDesc
                         mentorView.findViewById<TextView>(R.id.mentor_price).text = ""
 
                         val mentorStatusTextView = mentorView.findViewById<TextView>(R.id.mentor_status_txt)
-                        mentorStatusTextView.text = mentor.status
+                        mentorStatusTextView.text = mentorStatus
 
                         // Add the mentor view to the parent linear layout
                         favMentorsLinearLayout.addView(mentorView)
@@ -91,10 +97,49 @@ class MyProfile : AppCompatActivity() {
                     }
                 }
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle errors
             }
+        })
+
+        val reviewLinearLayout: LinearLayout = binding.reviewsLinearLayout
+        databaseReference.child("Reviews").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEachIndexed { index, reviewSnapshot ->
+                    val uid = reviewSnapshot.child("uid").getValue(String::class.java)
+                    val mentorid = reviewSnapshot.child("mentorid").getValue(String::class.java)
+                    val text = reviewSnapshot.child("text").getValue(String::class.java)
+                    val stars = reviewSnapshot.child("stars").getValue(Double::class.java)
+
+                    if (uid == currentUserUid) {
+                        // Retrieve mentor's name based on mentor ID
+                        databaseReference.child("Mentors").child(mentorid.toString())
+                            .addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(mentorSnapshot: DataSnapshot) {
+                                    val mentor = mentorSnapshot.child("name").getValue(String::class.java)
+                                    // Inflate the review item layout with the parent linear layout
+                                    val reviewView = layoutInflater.inflate(R.layout.mentor_review_item, reviewLinearLayout, false)
+
+                                    // Populate the review view with review data
+                                    reviewView.findViewById<TextView>(R.id.mentor_name).text = mentor
+                                    reviewView.findViewById<TextView>(R.id.review_txt).text = text
+                                    reviewView.findViewById<RatingBar>(R.id.ratingbar).rating = stars?.toFloat() ?: 0.0f
+
+                                    reviewLinearLayout.addView(reviewView)//add the review view to the parent linear layout
+
+                                    // Apply margin to the right of the review view if it's the last review
+                                    if (index == dataSnapshot.childrenCount.toInt() - 1) {
+                                        val params = reviewView.layoutParams as LinearLayout.LayoutParams
+                                        params.rightMargin = resources.getDimensionPixelSize(R.dimen.margin_end)
+                                        reviewView.layoutParams = params
+                                    }
+                                }
+                                override fun onCancelled(databaseError: DatabaseError) {}
+                            })
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
         })
 
 //        val profileEditBtn = findViewById<RelativeLayout>(R.id.profile_edit)
@@ -157,7 +202,6 @@ class MyProfile : AppCompatActivity() {
                 else -> false
             }
         }
-
         popupMenu.show()
     }
 

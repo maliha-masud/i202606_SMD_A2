@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#2D6568</item>
+        <item name="colorControlActivated">#FFC90A</item>
+        <item name="strokeColor">#FFC90A</item>
+    </style>
+</resources>
+<!--    #50C2C9-->

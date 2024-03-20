@@ -1,14 +1,11 @@
 package com.maliha.i202606
 
+import MentorItemViewHolder
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.widget.HorizontalScrollView
-import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.maliha.i202606.databinding.MainPgBinding
@@ -35,13 +32,10 @@ class MainPage : AppCompatActivity() {
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val userName = dataSnapshot.getValue(String::class.java)
-//                        binding.nameTxt.text = userName
                         binding.nameTxt.text = userName?.split(" ")?.get(0) ?: "" // Retrieve the first name
                     }
 
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        // Handle errors
-                    }
+                    override fun onCancelled(databaseError: DatabaseError) {}
                 })
         }
 
@@ -52,25 +46,31 @@ class MainPage : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val totalMentors = dataSnapshot.childrenCount.toInt()
                 dataSnapshot.children.forEachIndexed { index, mentorSnapshot ->
-                    val mentor = mentorSnapshot.getValue(Mentor::class.java)
-                    if (mentor != null) {
+                    val username = mentorSnapshot.child("username").getValue(String::class.java)
+                    val mentorName = mentorSnapshot.child("name").getValue(String::class.java)
+                    val mentorDesc = mentorSnapshot.child("desc").getValue(String::class.java)
+                    val mentorPrice = mentorSnapshot.child("price").getValue(Int::class.java)
+                    val mentorStatus = mentorSnapshot.child("status").getValue(String::class.java)
+                    val mentorType = mentorSnapshot.child("type").getValue(String::class.java)
+
+                    if (username != null && mentorName != null && mentorDesc != null && mentorPrice != null && mentorStatus != null && mentorType != null) {
                         // Inflate the mentor item layout with the appropriate parent linear layout
                         var parentLinearLayout = recentMentorsLinearLayout
-                        if (mentor.type == "Top")
+                        if (mentorType == "Top")
                             parentLinearLayout = topMentorsLinearLayout
-                        else if (mentor.type == "Education")
+                        else if (mentorType == "Education")
                             parentLinearLayout = eduMentorsLinearLayout
+
                         val mentorView = layoutInflater.inflate(R.layout.mentor_item, parentLinearLayout, false)
                         val mentorViewHolder = MentorItemViewHolder(mentorView)
-                        mentorViewHolder.bind(mentor, databaseReference)
 
                         // Populate the mentor view with mentor data
-                        mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentor.name
-                        mentorView.findViewById<TextView>(R.id.mentor_desc).text = mentor.desc
-                        mentorView.findViewById<TextView>(R.id.mentor_price).text = "$" + mentor.price.toString() + "/Session"
+                        mentorViewHolder.bind(username, databaseReference)
 
-                        val mentorStatusTextView = mentorView.findViewById<TextView>(R.id.mentor_status_txt)
-                        mentorStatusTextView.text = mentor.status
+                        mentorView.findViewById<TextView>(R.id.mentor_name_txt).text = mentorName
+                        mentorView.findViewById<TextView>(R.id.mentor_desc).text = mentorDesc
+                        mentorView.findViewById<TextView>(R.id.mentor_price).text = "$" + mentorPrice.toString() + "/Session"
+                        mentorView.findViewById<TextView>(R.id.mentor_status_txt).text = mentorStatus
 
                         // Add the mentor view to the parent linear layout
                         parentLinearLayout.addView(mentorView)
@@ -84,10 +84,12 @@ class MainPage : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle errors
             }
         })
+
 
 //        val notifsBtn = findViewById<ImageButton>(R.id.notifs_btn)
         binding.notifsBtn.setOnClickListener{
