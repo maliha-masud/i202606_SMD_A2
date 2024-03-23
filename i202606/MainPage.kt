@@ -84,12 +84,8 @@ class MainPage : AppCompatActivity() {
                     }
                 }
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle errors
-            }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
-
 
 //        val notifsBtn = findViewById<ImageButton>(R.id.notifs_btn)
         binding.notifsBtn.setOnClickListener{

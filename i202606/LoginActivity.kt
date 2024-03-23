@@ -8,7 +8,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.maliha.i202606.databinding.LoginPgBinding
 
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var binding:LoginPgBinding
     private lateinit var firebaseAuth: FirebaseAuth
 

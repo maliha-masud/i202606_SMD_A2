@@ -81,9 +81,7 @@ class MentorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle errors
-            }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
 }
