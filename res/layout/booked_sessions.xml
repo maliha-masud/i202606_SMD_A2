@@ -1,174 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DEF8F8">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="185dp"
-        android:src="@drawable/top_corner">
-    </ImageView>
-
-    <ImageButton
-        android:id="@+id/back_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/back_blue"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="115dp"
-        android:layout_marginLeft="20dp"
-        android:background="@android:color/transparent">
-    </ImageButton>
-    <TextView
-        android:id="@+id/booked_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/back_btn"
-        android:text="Booked Sessions"
-        android:layout_marginTop="108dp"
-        android:layout_marginLeft="12dp"
-        android:textSize="30sp"
-        android:textColor="#157177"
-        android:textStyle="bold">
-    </TextView>
-
-    <LinearLayout
-        android:id="@+id/jc_info"
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:src="@drawable/jc_rounded"
-            android:layout_marginLeft="20dp">
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="185dp"
+            android:src="@drawable/top_corner">
         </ImageView>
-        <RelativeLayout
-            android:layout_width="220dp"
-            android:layout_height="65dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/rounded_corners_txt"
-            android:layout_marginLeft="10dp">
 
-            <TextView
-                android:id="@+id/jc_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="John Cooper"
-                android:textColor="#157177"
-                android:textStyle="bold"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp">
-            </TextView>
-            <TextView
-                android:id="@+id/jc_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/jc_name"
-                android:text="UX Designer @ Google"
-                android:textColor="@color/black"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="2dp"
-                android:textSize="9sp">
-            </TextView>
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_blue"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="115dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent">
+        </ImageButton>
+        <TextView
+            android:id="@+id/booked_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/back_btn"
+            android:text="Booked Sessions"
+            android:layout_marginTop="108dp"
+            android:layout_marginLeft="12dp"
+            android:textSize="30sp"
+            android:textColor="#157177"
+            android:textStyle="bold">
+        </TextView>
 
-            <TextView
-                android:id="@+id/jc_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="24th Dec 2023"
-                android:textColor="#EEC227"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:textSize="11sp">
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/jc_name"
-                android:text="1:00 pm"
-                android:textColor="#EEC227"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="42.5dp"
-                android:textSize="10.5sp"
-                android:textStyle="bold">
-            </TextView>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/jc_info"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:src="@drawable/emma_rounded"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp">
-        </ImageView>
-        <RelativeLayout
-            android:layout_width="220dp"
-            android:layout_height="65dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/rounded_corners_txt"
-            android:layout_marginLeft="10dp">
-            <TextView
-                android:id="@+id/emma_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Emma Phillips"
-                android:textColor="#157177"
-                android:textStyle="bold"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp">
-            </TextView>
-            <TextView
-                android:id="@+id/emma_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/emma_name"
-                android:text="Android Developer"
-                android:textColor="@color/black"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="2dp"
-                android:textSize="9sp">
-            </TextView>
-
-            <TextView
-                android:id="@+id/emma_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1st Jan 2024"
-                android:textColor="#EEC227"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:textSize="11sp">
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/emma_name"
-                android:text="09:00 pm"
-                android:textColor="#EEC227"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="28.5dp"
-                android:textSize="10.5sp"
-                android:textStyle="bold">
-            </TextView>
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/booked_mentors_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/imageView">
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

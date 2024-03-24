@@ -39,14 +39,23 @@
             </TextView>
         </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/pfp_btn"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_pfp"
             android:layout_width="135dp"
             android:layout_height="130dp"
-            android:background="@drawable/ali_pfp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="165dp">
-        </ImageButton>
+            android:layout_marginTop="165dp"
+            android:src="@drawable/ali_pfp">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/pfp_btn"-->
+<!--            android:layout_width="135dp"-->
+<!--            android:layout_height="130dp"-->
+<!--            android:background="@drawable/ali_pfp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="165dp">-->
+<!--        </ImageButton>-->
     </RelativeLayout>
 
     <TextView

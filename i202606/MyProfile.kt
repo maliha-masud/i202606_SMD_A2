@@ -1,37 +1,69 @@
 package com.maliha.i202606
 
 import MentorItemViewHolder
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.provider.MediaStore
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.maliha.i202606.databinding.MyProfileBinding
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
 class MyProfile : AppCompatActivity() {
     private lateinit var binding: MyProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var storageReference: StorageReference
+    private lateinit var userPfp: CircleImageView
+    private lateinit var coverPic: ImageView
+
+    private val pickProfileImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val imageUri: Uri? = result.data?.data
+            imageUri?.let { uri ->
+                uploadProfilePic(uri)
+            }
+        }
+    }
+    private val pickCoverImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val imageUri: Uri? = result.data?.data
+            imageUri?.let { uri ->
+                uploadCoverPic(uri)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.my_profile)
         supportActionBar?.hide()
 
         binding = MyProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val backBtn = findViewById<ImageButton>(R.id.back_btn)
         binding.backBtn.setOnClickListener { finish() }
+        userPfp = findViewById(R.id.user_pfp)
+        coverPic = findViewById(R.id.cover_pic)
 
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
+        storageReference = FirebaseStorage.getInstance().reference
 
         val currentUserUid = firebaseAuth.currentUser?.uid
         currentUserUid?.let {
@@ -42,10 +74,7 @@ class MyProfile : AppCompatActivity() {
                         val userName = dataSnapshot.getValue(String::class.java)
                         binding.nameTxt.text = userName
                     }
-
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        // Handle errors
-                    }
+                    override fun onCancelled(databaseError: DatabaseError) {}
                 })
 
             databaseReference.child("Users").child(it).child("city")
@@ -54,12 +83,12 @@ class MyProfile : AppCompatActivity() {
                         val userCity = dataSnapshot.getValue(String::class.java)
                         binding.locTxt.text = userCity
                     }
-
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        // Handle errors
-                    }
+                    override fun onCancelled(databaseError: DatabaseError) {}
                 })
         }
+
+        loadUserProfilePicture()
+        loadUserCoverPicture()
 
         val favMentorsLinearLayout: LinearLayout = binding.favMentorsLinearLayout
         databaseReference.child("Mentors").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -97,9 +126,7 @@ class MyProfile : AppCompatActivity() {
                     }
                 }
             }
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle errors
-            }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
 
         val reviewLinearLayout: LinearLayout = binding.reviewsLinearLayout
@@ -125,7 +152,7 @@ class MyProfile : AppCompatActivity() {
                                     reviewView.findViewById<TextView>(R.id.review_txt).text = text
                                     reviewView.findViewById<RatingBar>(R.id.ratingbar).rating = stars?.toFloat() ?: 0.0f
 
-                                    reviewLinearLayout.addView(reviewView)//add the review view to the parent linear layout
+                                    reviewLinearLayout.addView(reviewView) //add the review view to the parent linear layout
 
                                     // Apply margin to the right of the review view if it's the last review
                                     if (index == dataSnapshot.childrenCount.toInt() - 1) {
@@ -136,23 +163,25 @@ class MyProfile : AppCompatActivity() {
                                 }
                                 override fun onCancelled(databaseError: DatabaseError) {}
                             })
-                    }
+                        }
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
 
-//        val profileEditBtn = findViewById<RelativeLayout>(R.id.profile_edit)
         binding.profileEdit.setOnClickListener {
             startActivity(Intent(this, EditProfile::class.java))
         }
 
-//        val picEditBtn = findViewById<ImageButton>(R.id.edit_pfp)
         binding.editPfp.setOnClickListener {
-            startActivity(Intent(this, EditProfile::class.java))
+            //startActivity(Intent(this, EditProfile::class.java))
+            openImagePickerProfile() // Function to open image picker
         }
 
-//        val bookedSessionsBtn = findViewById<RelativeLayout>(R.id.bookedsessions_btn)
+        binding.editCover.setOnClickListener {
+            openImagePickerCover()
+        }
+
         binding.bookedsessionsBtn.setOnClickListener {
             startActivity(Intent(this, BookedSessions::class.java))
         }
@@ -162,22 +191,15 @@ class MyProfile : AppCompatActivity() {
         menuBtn.setOnClickListener { showPopupMenu(menuBtn) }
 
         //////////////////BOTTOM NAV BAR////////////////////
-//        val addBtn = findViewById<ImageButton>(R.id.plus_btn)
         binding.plusBtn.setOnClickListener{
             startActivity(Intent(this, AddMentor::class.java))
         }
-
-//        val homeBtn = findViewById<ImageButton>(R.id.home_btn)
         binding.homeBtn.setOnClickListener{
             startActivity(Intent(this, MainPage::class.java))
         }
-
-//        val searchBtn = findViewById<ImageButton>(R.id.search_btn)
         binding.searchBtn.setOnClickListener{
             startActivity(Intent(this, FindBar::class.java))
         }
-
-//        val chatBtn = findViewById<ImageButton>(R.id.chat_btn)
         binding.chatBtn.setOnClickListener{
             startActivity(Intent(this, ChatBar::class.java))
         }
@@ -209,5 +231,87 @@ class MyProfile : AppCompatActivity() {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signOut()
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    private fun openImagePickerProfile() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        pickProfileImage.launch(intent)
+    }
+    private fun uploadProfilePic(imageUri: Uri) {
+        val currentUserUid = firebaseAuth.currentUser?.uid
+        storageReference = FirebaseStorage.getInstance().getReference("Users/$currentUserUid/profile_pic")
+        storageReference.putFile(imageUri).addOnSuccessListener {
+            loadUserProfilePicture()
+            Toast.makeText(this@MyProfile, "Image upload successful", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener{
+            Toast.makeText(this@MyProfile, "Something went wrong", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun loadUserProfilePicture() {
+        val currentUserUid = firebaseAuth.currentUser?.uid
+        currentUserUid?.let { uid ->
+            // Correctly set the storage reference to the user's profile picture
+            val imageRef = FirebaseStorage.getInstance().getReference("Users/${uid}/profile_pic")
+
+            // Get the download URL of the image
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                // Load the image using Picasso library into CircleImageView
+                Picasso.get().load(uri.toString()).into(userPfp)
+            }.addOnFailureListener { exception ->
+                // If fetching the download URL fails, display an error message
+                Toast.makeText(this@MyProfile, "Failed to load profile picture: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    /////////////////////////////////////////////////////////
+    private fun openImagePickerCover() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        pickCoverImage.launch(intent)
+    }
+    private fun uploadCoverPic(imageUri: Uri) {
+        val currentUserUid = firebaseAuth.currentUser?.uid
+        val storageRef = FirebaseStorage.getInstance().getReference("Users/$currentUserUid/cover_photo")
+
+        // Get dimensions of the uploaded image
+        val inputStream = contentResolver.openInputStream(imageUri)
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        BitmapFactory.decodeStream(inputStream, null, options)
+        val imageWidth = options.outWidth
+
+        // Check if the image meets the required width
+        val screenWidth = resources.displayMetrics.widthPixels
+        val requiredWidth = screenWidth // Adjust this value as needed
+
+        if (imageWidth >= requiredWidth) {
+            // Proceed with the upload
+            storageRef.putFile(imageUri)
+                .addOnSuccessListener {
+                    loadUserCoverPicture()
+                    Toast.makeText(this@MyProfile, "Cover photo upload successful", Toast.LENGTH_SHORT).show()
+                    // Update the UI or perform any other actions
+                }.addOnFailureListener{
+                    Toast.makeText(this@MyProfile, "Something went wrong", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            // Display a message indicating that the image needs to be resized or cropped
+            Toast.makeText(this@MyProfile, "Cover photo must be at least as wide as the screen", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun loadUserCoverPicture() {
+        val currentUserUid = firebaseAuth.currentUser?.uid
+        currentUserUid?.let { uid ->
+            // Correctly set the storage reference to the user's profile picture
+            val imageRef = FirebaseStorage.getInstance().getReference("Users/${uid}/cover_photo")
+
+            // Get the download URL of the image
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                // Load the image using Picasso library into CircleImageView
+                Picasso.get().load(uri.toString()).into(coverPic)
+            }.addOnFailureListener { exception ->
+                // If fetching the download URL fails, display an error message
+                Toast.makeText(this@MyProfile, "Failed to load cover picture: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

@@ -44,29 +44,21 @@ class MentorPg : AppCompatActivity() {
                     }
                 }
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle errors
-            }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-//        val backBtn = findViewById<ImageButton>(R.id.back_btn)
         binding.backBtn.setOnClickListener { finish() }
 
-//        val reviewBtn = findViewById<RelativeLayout>(R.id.review_btn)
         binding.reviewBtn.setOnClickListener{
-//            startActivity(Intent(this, MentorReview::class.java))
             val intent = Intent(this, MentorReview::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
         }
 
-//        val communityBtn = findViewById<RelativeLayout>(R.id.community_btn)
         binding.communityBtn.setOnClickListener{
             startActivity(Intent(this, CommunityChat::class.java))
         }
 
-//        val bookSessionBtn = findViewById<Button>(R.id.book_btn)
         binding.bookBtn.setOnClickListener{
             startActivity(Intent(this, BookMentor::class.java))
         }

@@ -97,7 +97,6 @@ class SearchResults : AppCompatActivity() {
                     val mentorDesc = mentorSnapshot.child("desc").getValue(String::class.java)
                     val mentorPrice = mentorSnapshot.child("price").getValue(Int::class.java)
                     val mentorAvailable = mentorSnapshot.child("status").getValue(String::class.java)
-                    val mentorFav = mentorSnapshot.child("fav").getValue(Boolean::class.java)
 
                     // Check if mentor name matches the search text
                     if (mentorName != null && mentorName.contains(searchText, ignoreCase = true)) {
